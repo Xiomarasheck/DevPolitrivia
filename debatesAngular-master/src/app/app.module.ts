@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { StorageServiceModule } from 'angular-webstorage-service';
+
 /* Componentes */
 import { HomeComponent } from './Menu/home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -27,8 +29,8 @@ import { DebateService } from './Services/debate.service';
 import { CommentService } from './Services/comment.service';
 import { CommentsComponent } from './Menu/Scroll/comments/comments.component';
 import { DeleteAccountComponent } from './Menu/User/delete-account/delete-account.component';
-
-
+import { LocalStorageService } from './Services/local-storage.service';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -42,8 +44,6 @@ import { DeleteAccountComponent } from './Menu/User/delete-account/delete-accoun
     DebatesInScrollComponent,
     CommentsComponent,
     DeleteAccountComponent,
-
-    
   ],
   imports: [
     BrowserModule,
@@ -51,7 +51,10 @@ import { DeleteAccountComponent } from './Menu/User/delete-account/delete-accoun
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    StorageServiceModule,
+    MatButtonModule, 
+    MatCheckboxModule 
   ],
   providers: [UserService,DebateService,CommentService,User,Response,Comment,Menu,Rating],
   bootstrap: [AppComponent]

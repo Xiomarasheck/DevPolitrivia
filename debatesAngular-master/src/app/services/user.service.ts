@@ -1,17 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Inject,Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
 import { User } from '../Model/user';
 import { Menu } from '../Model/menu';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
   private headers: HttpHeaders;
   private accessPointUrl: string = 'http://localhost:61568/api/user';
   /* static instance:UserRegisterService; */
   private loginState = false;
-  constructor(private http: HttpClient,private currentUser:User,private userRol:Menu) 
+
+
+  constructor(private http: HttpClient,private currentUser:User,private userRol:Menu,@Inject(SESSION_STORAGE) private storage: WebStorageService) 
   { 
    /*  UserRegisterService.instance = this; */
     this.headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
@@ -46,30 +50,38 @@ export class UserService {
       this.currentUser = usr;
       this.userRol = menu;
       this.loginState = true;
+
+      this.storage.set('local_storage',  this.loginState);
+      this.storage.set('local_storage_menu',  this.userRol);
+      this.storage.set('local_storage_user',  this.currentUser);
+      
   }
  
   public getLoginState()
   {
-     return this.loginState;
+    return this.storage.get('local_storage') || this.loginState;
   }
 
   public getUserName()
   {
-    return this.currentUser.Name+" "+this.currentUser.SecondName;
+    return this.storage.get('local_storage_user').Name+" "+ this.storage.get('local_storage_user').SecondName || 
+      this.currentUser.Name+" "+this.currentUser.SecondName
+    
   }
 
   public getUserId()
   {
-    return this.currentUser.Id;
+    return this.storage.get('local_storage_user').Id || this.currentUser.Id;
   }
 
   public logOut()
   {
     this.loginState = false;
+    this.storage.set('local_storage',  this.loginState );
   }
 
   public getMenu()
   {
-    return this.userRol;
+    return this.storage.get('local_storage_menu') || this.userRol;
   }
 }

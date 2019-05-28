@@ -13,14 +13,15 @@ import { Menu } from '../Model/menu';
 export class LoginComponent implements OnInit {
 
   public loginForm:FormGroup;
-  constructor(private formBuilder:FormBuilder,private usrService:UserService
-    ,private router: Router,private currentUser:User,private menuUser:Menu ) { }
+  constructor(private formBuilder:FormBuilder,private usrService:UserService,private router: Router,private currentUser:User,private menuUser:Menu ) { }
 
   ngOnInit() {
+  
     this.loginForm = this.formBuilder.group({
       Email:['',[Validators.required,Validators.email]],
       Password:['',Validators.required]
     });
+
     this.usrService.setup().subscribe();
   }
 

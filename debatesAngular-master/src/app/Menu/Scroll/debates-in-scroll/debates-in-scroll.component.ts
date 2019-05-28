@@ -71,7 +71,7 @@ export class DebatesInScrollComponent implements OnInit {
 
   async rating()
   {
-       let rating = new Rating();
+      let rating = new Rating();
       rating.AutorID  = this.usr.getUserId();
       rating.DebateId = this.debate.Id;
       rating.Rate = this.currentRate;

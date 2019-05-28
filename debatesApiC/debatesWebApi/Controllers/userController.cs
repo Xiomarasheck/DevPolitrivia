@@ -12,6 +12,9 @@ using System.Net.Http.Headers;
 namespace debatesWebApi.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+
+
+
     public class userController : ApiController
     {
         DataStore db = new DataStore();
@@ -81,6 +84,8 @@ namespace debatesWebApi.Controllers
             db.Users.Add(usuario);
             db.SaveChanges();
         }
+
+
         // PUT api/user
         public void Put(int id, [FromBody]string value)
         {

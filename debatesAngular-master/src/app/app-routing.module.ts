@@ -6,7 +6,7 @@ import { RegisterUserComponent } from './Menu/register-user/register-user.compon
 import { DebatesComponent } from './Menu/debates/debates.component';
 import { ReportsComponent } from './Menu/reports/reports.component';
 import { ScrollDebatesComponent } from './Menu/Scroll/scroll-debates/scroll-debates.component';
-
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 import { AuthLoginService } from './services/auth-login.service';
 
@@ -16,14 +16,14 @@ const routes: Routes = [
  /* {path:'Home',component:HomeComponent,canActivate:[AuthLoginService]}, */
  {path:'Home',component:HomeComponent,canActivate:[AuthLoginService]},
  {path:'Register',component:RegisterUserComponent },
- {path:'Debates',component:DebatesComponent,canActivate:[AuthLoginService] },
- {path:'Report',component:ReportsComponent ,canActivate:[AuthLoginService]},
+ {path:'Debates',component:DebatesComponent},
+ {path:'Report',component:ReportsComponent},
  {path:'ScrollDebate',component:ScrollDebatesComponent ,canActivate:[AuthLoginService]},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes),MatButtonModule, MatCheckboxModule],
+  exports: [RouterModule,MatButtonModule, MatCheckboxModule],
 })
 
 export class AppRoutingModule { }

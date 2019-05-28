@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit() { 
-    
+    this.navigateComponent('ScrollDebate');
   }
   
   public navigateComponent(componente)
@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
     this.showUserOption = false;
     this.showDeleteAccount = false;
     this.showRegisterUser = false;
+
     switch(componente)
     {
         case 'Debates':{this.showDebatesComponent = true;break;}
