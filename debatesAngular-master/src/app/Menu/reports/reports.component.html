@@ -1,0 +1,89 @@
+<div class="container">
+    <hr>
+    <div class="row pull-center ">
+        <h4 align="center">Reportes</h4>
+    </div>   
+    <hr>
+    <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+    
+            <div class="info-box-content">
+              <span class="info-box-text">Commets</span>
+              <span class="info-box-number">1,410</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-flag-o"></i></span>
+    
+            <div class="info-box-content">
+              <span class="info-box-text">Bookmarks</span>
+              <span class="info-box-number">{{countDebates}} </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
+    
+            <div class="info-box-content">
+              <span class="info-box-text">Uploads</span>
+              <span class="info-box-number">13,648</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-star-o"></i></span>
+    
+            <div class="info-box-content">
+              <span class="info-box-text">Calificaciones</span>
+              <span class="info-box-number">93,139</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+
+    
+  <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Debate</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Autor</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let element of alldebates$ | async">
+        <tr>
+          <th scope="row">{{element.Id}}</th>
+          <td>{{element.Titulo}}</td>
+          <td>{{element.Tema}}</td>
+          <td>{{element.FechaVencimiento}}</td>
+          <td>{{element.AutorName}}</td>
+        </tr>
+      </tbody>
+      <tr mat-header-row ></tr>
+      <tr mat-row></tr>
+    </table>
+</div>
+
+
+
+

@@ -1,0 +1,7 @@
+<div class="py-4 px-5">
+    <h3>Todos los debates</h3>
+    <div class="row">
+        <app-debates-in-scroll class="col-12 col-md-6 mb-3" [debate]="xdebate" *ngFor="let xdebate of alldebates$ | async"></app-debates-in-scroll>
+        <div *ngIf="countDebates===0">No se han creado debates</div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="box-comment border-success">
+    <!-- User image -->
+    <img class="rounded-circle img-sm" src="https://picsum.photos/200/200" alt="User Image">
+    <div class="comment-text">
+      <span class="username">
+        {{ currentComment.AutorName }}
+        <span class="text-muted pull-right">Fecha publicacion: {{ currentComment.FechaPublicacion }}</span>
+      </span><!-- /.username -->
+      <p><small>{{ currentComment.Descripcion }}</small></p>
+      <small>
+          <ngb-rating class="pull-right" [(rate)]="currentRate" max="5" [(ngModel)] = "currentRate" (click)="rating()">
+              <ng-template let-fill="fill" let-index="index">
+                <span   class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+              </ng-template>
+          </ngb-rating> 
+          <ul class="">
+              <cite title="Source Title" class="pull-left">Rate {{currentRate}} </cite> -
+              <cite title="Source Title" class="pull-left">Número de votos {{currentComment.RatingCount}} </cite>-
+              <cite title="Source Title" class="pull-left">Promedio {{currentComment.Average}} </cite>
+          </ul>
+        </small>
+    </div>
+    <!-- /.comment-text -->
+  </div>

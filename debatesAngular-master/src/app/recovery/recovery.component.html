@@ -1,0 +1,47 @@
+<div class="d-flex align-items-center justify-content-end px-md-5 px-2 mt-5">
+  <form *ngIf=showFormRecovery [formGroup]="recoveryForm" novalidate class="formLogin animated bounceInRight fast mb-5">
+    <div class="loginContent">
+      <h1 class="titleForm">Recupera tu contraseña</h1>
+      <hr class="line">
+      <div class="form-group">
+        <label for="emailUser">Correo</label>
+        <input type="text" formControlName="Email" name="emailUser" class="uk-input" id="emailUser"
+          placeholder="Ingresa tu email">
+        <div class="uk-text-danger uk-text-small pl-1 uk-padding-remove-bottom"
+          *ngIf="(recoveryForm.get('Email').hasError('required') || recoveryForm.get('Email').hasError('email')) && recoveryForm.get('Email').dirty">
+          Ingresa un correo electrónico válido</div>
+        <div class="uk-text-danger uk-text-small pl-1 uk-padding-remove-bottom" *ngIf="this.mailNotExists">
+          Esta cuenta no existe</div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="recoveryForm.invalid" class="btn btn-primary"
+        (click)="recoveryValidate()" [disabled]="recoveryForm.invalid || this.ajax">Recuperar</button>
+      <hr>
+      <div class="uk-text-center">
+        <a class="uk-text-primary" (click)="this.tools.nav('login')">Inciar sesión</a>
+      </div>
+      <div class="uk-text-center">
+        <a class="uk-text-primary" (click)="this.tools.nav('RegisterUser')">Regístrate</a>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf="!showFormRecovery && !changePassword" class="formLogin mb-5">
+    <h1 class="titleForm mb-5">Recupera tu contraseña</h1>
+    <p class="mb-5">Hemos enviado un correo a la dirección que indicaste.<br>Verifícalo y recupera tu contraseña</p>
+    <button type="submit" class="btn btn-primary" class="btn btn-primary"
+      (click)="this.tools.nav('login')">Entendido</button>
+  </div>
+
+  <div *ngIf=changePassword class="formLogin animated bounceInRight fast mb-5">
+    <h1 class="titleForm">Recupera tu contraseña</h1>
+    <hr class="line mb-5">
+    <app-change-password></app-change-password>
+    <hr>
+    <div *ngIf="!this.showChange" class="uk-text-center">
+      <a class="uk-text-primary" (click)="this.tools.nav('login')">Inciar sesión</a>
+    </div>
+    <div class="uk-text-center">
+      <a class="uk-text-primary" (click)="this.tools.nav('RegisterUser')">Regístrate</a>
+    </div>
+  </div>
+</div>

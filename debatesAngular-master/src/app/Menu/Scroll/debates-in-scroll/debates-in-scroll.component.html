@@ -1,0 +1,60 @@
+
+<div class="card bg-transparent mb-3" style="max-width: 32rem;">
+    <div class="card-header bg-transparent">
+      <div class="box-header with-border">
+        <div class="user-block">
+          <img class="rounded-circle" src="https://picsum.photos/200/300" alt="User Image">
+          <span class="username"><a href="#">{{ debate.AutorName }}.</a></span>
+          <span class="description">{{ debate.FechaPublicacion }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Debate {{ debate.Titulo }}</h5>
+      <small class="text-muted pull-right"> Fecha Vencimiento
+          <cite title="Source Title">{{ debate.FechaVencimiento }}</cite>
+      </small><br>
+ 
+      <img class="card-img-top" src="https://picsum.photos/id/{{debate.Id+20}}/3955/2094" alt="Card image cap"><br>
+
+      <p class="card-text"><small>{{ debate.Tema }}.</small></p>
+      <small>
+        <ngb-rating class="pull-right" [(rate)]="currentRate" max="5" [(ngModel)] = "currentRate" (click)="rating()">
+          <ng-template let-fill="fill" let-index="index">
+            <span   class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+          </ng-template>
+        </ngb-rating>
+        <ul>
+            <cite title="Source Title" class="pull-left">Rate {{currentRate}} </cite> -
+            <cite title="Source Title" class="pull-left">Número de votos {{debate.RatingCount}} </cite> -
+            <cite title="Source Title" class="pull-left">Promedio {{debate.Average}} </cite>
+        </ul>
+      </small>
+    </div>
+    <div class="box-footer box-comments bg-transparent border-success">
+      <div *ngIf="showComment">
+        <app-comments [currentComment]="xcomment" *ngFor="let xcomment of commentsInDebate$ | async"></app-comments>
+      </div>
+      <form [formGroup]="debatesInScrollForm" novalidate autocomplete="off">
+        <div *ngIf="debate.Estado === false">
+  
+          <br>
+          <div class="input-group">
+            <!-- /btn-group -->
+            <input type="text" name="Descripcion" class="form-control mb-3" formControlName="Descripcion"
+            placeholder="Comenta este debate....." />
+            <div class="input-group-btn">
+              <button type="submit" [disabled]="debatesInScrollForm.invalid"
+              class="btn btn-success uk-button-small rounded-0" (click)="sendComment()">Publicar</button>
+            </div>
+            <div  class="input-group-btn">
+                <button type="button" class="btn btn-default uk-button-small rounded-0"
+                (click)="getComment()">{{textButton}} </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  

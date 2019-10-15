@@ -1,0 +1,191 @@
+<div id="offcanvas-push" uk-offcanvas="mode: push; overlay: true">
+  <nav id="nav-offcanvas" class="uk-offcanvas-bar">
+    <button class="uk-offcanvas-close" type="button" uk-close></button>
+    <div>
+      <div class="mb-3 pt-3 pb-2 px-1">
+        <div class="text-center">
+          <div id="container-user-img" class="rounded-circle">
+            <img class="rounded-circle" src="https://picsum.photos/200/300" alt="User Image">
+          </div>
+          <p class="text-center mb-0 small text-12 text-f5"></p>
+        </div>
+      </div>
+      <div *ngIf="menu.Scroll">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center"
+            (click)="navigateComponent('ScrollDebate');">
+            <span class="text-center mr-3"><i class="far fa-list-alt fa-2x"></i></span>
+            <span class="text-center mb-0 small">Ver debates</span>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="menu.CreateDebate">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center"
+            (click)="navigateComponent('Debates');">
+            <span class="text-center mr-3"><i class="far fa-plus-square fa-2x"></i></span>
+            <span class="text-center mb-0 small">Crear debate</span>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="menu.Report">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center"
+            (click)="navigateComponent('Report');">
+            <span class="text-center mr-3"><i class="far fa-file-alt fa-2x"></i></span>
+            <span class="text-center mb-0 small">Informes</span>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="menu.RegisterUser">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center"
+            (click)="navigateComponent('RegisterUser')">
+            <span class="text-center mr-3"><i class="fas fa-user-plus fa-2x"></i></span>
+            <span class="text-center mb-0 small">Crear usuario</span>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="showUserOption">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center"
+            (click)="navigateComponent('DeleteAccount')">
+            <span class="text-center mr-3"><i class="fas fa-user-minus fa-2x"></i></span>
+            <span class="text-center mb-0 small">Borrar usuario</span>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="text-center">
+          <ul class="uk-nav-default uk-nav-parent-icon" uk-nav>
+            <li class="uk-parent">
+              <a class="px-4 py-3 uk-text-left btn-d-menu d-flex align-items-center justify-content-between"><span class="d-flex align-items-center"><i class="fas fa-cog fa-2x mr-3"></i> Configurar</span></a>
+              <ul class="uk-nav-sub">
+                <li><a class="btn-d-menu px-4 py-3 uk-text-left" (click)="navigateComponent('CambiarClave')"><i class="fas fa-key mr-2"></i>
+                    Cambiar clave</a></li>
+                <li><a class="btn-d-menu px-4 py-3 uk-text-left" (click)="navigateComponent('ActualizarDatos')"><i class="fas fa-user-edit mr-2"></i> Actualizar
+                    datos</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu d-flex align-items-center" (click)="signOut()">
+            <span class="text-center mr-3"><i class="fas fa-power-off fa-2x"></i></span>
+            <span class="text-center mb-0 small">Cerrar sesión</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+<div>
+  <div class="d-flex">
+    <div id="menu-v-lateral" class="col-md-1 px-0 d-none d-md-block position-fixed h-100">
+      <div class="mb-3 pt-3 pb-2 px-1">
+        <div class="text-center">
+          <div class="row"></div>
+          <div class="user-block">
+            <img class="rounded-circle" src="https://picsum.photos/200/300" alt="User Image" style="
+            margin-left: 27px;
+        ">
+          </div>
+
+          <p class="text-center mb-0 small text-12 text-f5">{{ user }}</p>
+        </div>
+      </div>
+      <div *ngIf="menu.Scroll">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="navigateComponent('ScrollDebate');">
+            <p class="text-center"><i class="far fa-list-alt fa-2x"></i></p>
+            <p class="text-center mb-0 small">Ver debates</p>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="menu.CreateDebate">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="navigateComponent('Debates');">
+            <p class="text-center"><i class="far fa-plus-square fa-2x"></i></p>
+            <p class="text-center mb-0 small">Crear debate</p>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="menu.Report">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="navigateComponent('Report');">
+            <p class="text-center"><i class="far fa-file-alt fa-2x"></i></p>
+            <p class="text-center mb-0 small">Informes</p>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="menu.RegisterUser">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="navigateComponent('RegisterUser')">
+            <p class="text-center"><i class="fas fa-user-plus fa-2x"></i></p>
+            <p class="text-center mb-0 small">Crear usuario</p>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="showUserOption">
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="navigateComponent('DeleteAccount')">
+            <p class="text-center"><i class="fas fa-user-minus fa-2x"></i></p>
+            <p class="text-center mb-0 small">Borrar usuario</p>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="text-center position-relative">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu" type="button">
+            <p class="text-center"><i class="fas fa-cog fa-2x"></i></p>
+            <p class="text-center mb-0 small">Configurar</p>
+          </button>
+          <div uk-dropdown="pos: right-center" top="0" class="p-3 ml-1 btn-d-menu">
+            <ul class="uk-nav uk-dropdown-nav">
+              <li class="uk-text-left"><a (click)="navigateComponent('CambiarClave')"><i class="fas fa-key mr-2"></i>
+                  Cambiar clave</a></li>
+              <li class="uk-text-left"><a (click)="navigateComponent('ActualizarDatos')"><i
+                    class="fas fa-user-edit mr-2"></i> Actualizar datos</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="text-center">
+          <button class="uk-button px-4 py-3 btn-block btn-d-menu" (click)="signOut()">
+            <p class="text-center"><i class="fas fa-power-off fa-2x"></i></p>
+            <p class="text-center mb-0 small">Cerrar sesión</p>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 px-0 offset-md-1 col-md-11">
+      <header class="text-right header-politrivia mb-0 position-sticky">
+        <div class="d-flex">
+          <div class="col-1 px-0">
+            <button class="d-block d-md-none uk-button-default" type="button" uk-toggle="target: #offcanvas-push">
+              <i class="fas fa-bars fa-inverse text-primary"></i></button>
+          </div>
+          <div class="col-11 text-white text-right px-0">
+            <img src="../../../assets/Images/icono-politrivia.svg" alt="Logo politrivia" class="icon-banner">
+          </div>
+        </div>
+      </header>
+      <div>
+        <app-debates *ngIf=showDebatesComponent></app-debates>
+        <app-reports *ngIf=showReportComponent></app-reports>
+        <app-scroll-debates *ngIf=showScrollDebatesComponent></app-scroll-debates>
+        <app-delete-account *ngIf=showDeleteAccount></app-delete-account>
+        <app-register-user *ngIf=showRegisterUser></app-register-user>
+        <div class="row" *ngIf=showChangePassword>
+          <div class="col-12 col-md-6 offset-md-3 px-4">
+              <h3 class="my-4">Actualiza tu contraseña</h3>
+            <app-change-password></app-change-password>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

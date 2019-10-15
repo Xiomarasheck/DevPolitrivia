@@ -1,0 +1,36 @@
+<div class="d-flex align-items-center justify-content-end px-md-5 px-2 mt-5">
+  <form [formGroup]="loginForm" novalidate class="formLogin animated bounceInRight fast mb-5">
+    <div class="loginContent">
+      <h1 class="titleForm">Login</h1>
+      <hr class="line">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Usuario</label>
+        <input type="text" formControlName="Email" name="uname" class="uk-input" id="exampleInputEmail1"
+          aria-describedby="emailHelp" placeholder="Ingresa tu usuario o email">
+        <div class="uk-text-danger uk-text-small pl-1 uk-padding-remove-bottom"
+          *ngIf="loginForm.get('Email').hasError('required') && loginForm.get('Email').touched">
+          Correo electrónico requerido</div>
+        <div class="uk-text-danger uk-text-small pl-1 uk-padding-remove-bottom"
+          *ngIf="loginForm.get('Email').hasError('email') && loginForm.get('Email').touched">
+          Ingresa un correo electrónico válido</div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Contraseña</label>
+        <input type="password" class="uk-input" id="exampleInputPassword1" placeholder="Ingresa tu contraseña"
+          name="Password" formControlName="Password">
+        <div class="uk-text-danger uk-text-small pl-1 uk-padding-remove-bottom"
+          *ngIf="loginForm.get('Password').hasError('required') && loginForm.get('Password').touched">No has
+          ingresado una contraseña</div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" class="btn btn-primary"
+        (click)="loginValidate()">Ingresar</button>
+      <hr>
+      <div class="uk-text-center">
+        <a class="uk-text-primary" (click)="this.tools.nav('RegisterUser')">Regístrate</a>
+      </div>
+      <div class="uk-text-center">
+        <a class="uk-text-primary" (click)="this.tools.nav('Recovery')">¿Has olvidado tu contraseña?</a>
+      </div>
+    </div>
+  </form>
+</div>

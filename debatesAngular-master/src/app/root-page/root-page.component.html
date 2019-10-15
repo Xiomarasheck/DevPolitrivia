@@ -1,0 +1,16 @@
+<section class="principalBanner contentLogin">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <a class="navbar-brand" href="#">
+      <img src="../../assets/Images/icono-politrivia.svg" alt="Logo politrivia" class="icon-banner">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse pull-left" id="navbarSupportedContent ">
+    </div>
+  </nav>
+  <app-login *ngIf=showLogin></app-login>
+  <app-register *ngIf=showRegister></app-register>
+  <app-recovery *ngIf=showRecovery></app-recovery>
+</section>

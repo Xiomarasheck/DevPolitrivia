@@ -1,0 +1,52 @@
+<div class="d-flex align-items-center justify-content-end px-md-5 px-2 mt-5">
+    <form [formGroup]="registerForm" novalidate class="formLogin animated bounceInRight fast mb-5">
+        <div class="loginContent">
+            <h1 class="titleForm">Regístrate</h1>
+            <hr class="line">
+            <div class="form-group">
+                <label for="nameUser">Nombre</label>
+                <input type="text" formControlName="Name" name="nameUser" class="uk-input" id="nameUser" placeholder="Ingresa tu nombre">
+                <div class="uk-text-danger uk-text-small pl-1 uk-padding-remove-bottom"
+                    *ngIf="(registerForm.get('Name').hasError('required') || registerForm.get('Name').hasError('minlength')) && registerForm.get('Name').dirty">
+                    Nombre requerido, mínimo tres caracteres</div>
+            </div>
+            <div class="form-group">
+                <label for="lastnameUser">Apellido</label>
+                <input type="text" formControlName="SecondName" name="lastnameUser" class="uk-input" id="lastnameUser" aria-describedby="emailHelp" placeholder="Ingresa tu apellido">
+                <div class="uk-text-danger uk-text-small pl-1 uk-padding-remove-bottom"
+                    *ngIf="(registerForm.get('SecondName').hasError('required') || registerForm.get('SecondName').hasError('minlength')) && registerForm.get('SecondName').dirty">
+                    Apellido requerido</div>
+            </div>
+            <div class="form-group">
+                <label for="emailUser">Ingresa tu dirección de correo</label>
+                <input type="text" formControlName="Email" name="emailUser" class="uk-input" id="emailUser" placeholder="Ingresa tu email">
+                <div class="uk-text-danger uk-text-small pl-1 uk-padding-remove-bottom"
+                    *ngIf="(registerForm.get('Email').hasError('required') || registerForm.get('Email').hasError('email')) && registerForm.get('Email').dirty">
+                    Ingresa un correo electrónico válido</div>
+            </div>
+            <div class="form-group">
+                <label for="passwordUser">Ingresa una contraseña</label>
+                <input type="password" class="uk-input" formControlName="Password" id="passwordUser" placeholder="Ingresa tu contraseña" name="passwordUser">
+                <div class="uk-text-danger uk-text-small pl-1 uk-padding-remove-bottom"
+                    *ngIf="(registerForm.get('Password').hasError('required') || registerForm.get('Password').hasError('minlength')) && registerForm.get('Password').dirty">No has
+                    ingresado una contraseña válida</div>
+            </div>
+            <div class="form-group">
+                <label for="passwordRepeat">Confirma la contraseña</label>
+                <input type="password" class="uk-input" formControlName="passwordRepeat" id="passwordRepeat" placeholder="Ingresa tu contraseña" name="passwordRepeat">
+                <div class="uk-text-danger uk-text-small pl-1 uk-padding-remove-bottom"
+                    *ngIf="(registerForm.get('passwordRepeat').value != registerForm.get('Password').value) && registerForm.get('passwordRepeat').dirty">
+                    No coinciden la contraseña y la confirmación</div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid" class="btn btn-primary"
+                (click)="registerValidate()" [disabled]="registerForm.invalid || this.ajax">Registrar</button>
+            <hr>
+            <div class="uk-text-center">
+                <a class="uk-text-primary" (click)="this.tools.nav('login')">Inciar sesión</a>
+            </div>
+            <div class="uk-text-center">
+                <a class="uk-text-primary" (click)="this.tools.nav('Recovery')">¿Has olvidado tu contraseña?</a>
+            </div>
+        </div>
+    </form>
+</div>

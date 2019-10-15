@@ -1,0 +1,16 @@
+composer.phar
+/vendor/
+
+/debatesApiC/packages/
+/debatesAngular-master/node_modules/
+/debatesApiC/.vs/debatesWebApi/v15/
+/debatesApiC/debatesWebApi/Web.config
+/debatesApiC/debatesWebApi/obj/
+
+
+# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+# composer.lock
+
+
+

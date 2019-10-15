@@ -1,0 +1,34 @@
+.star {
+    font-size: 1.5rem;
+    color: #b0c4de;
+  }
+  .filled {
+    color: #1e90ff;
+  }
+  .bad {
+    color: #deb0b0;
+  }
+  .filled.bad {
+    color: #ff1e1e;
+  }
+
+
+  .pull-right {
+    float: right;
+  } 
+
+  .box-comments .box-comment:first-of-type {
+    padding-top: 0;
+  }
+
+  .box-comments .box-comment {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
+  }
+
+  .box-comments .comment-text {
+    margin-left: 40px;
+    color: #555;
+    font-size: 14px;
+}
