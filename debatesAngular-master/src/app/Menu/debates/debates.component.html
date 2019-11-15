@@ -1,0 +1,36 @@
+<div class="row justify-content-center align-items-center minh-100">
+	<div class="col-md-8">
+		<h4 align="center">Nuevo Debate</h4>
+		<form [formGroup]="debatesForm" novalidate autocomplete="off" >
+			<div class="container">
+				<div class="form-group">
+					<label for="Titulo"><b>Titulo</b></label>
+					<input type="text" class="form-control" formControlName="Titulo" name="Titulo">
+					<div class="error red" *ngIf="debatesForm.get('Titulo').hasError('required') && debatesForm.get('Titulo').touched">
+						No ha seleccionado un titulo para este debate
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="Tema"><b>Descripcion del debate</b></label>
+					<textarea  class="form-control"  name="Tema" formControlName="Tema"></textarea>
+					<div class="error red" *ngIf="debatesForm.get('Tema').hasError('required') && debatesForm.get('Tema').touched">
+						No se ha ingresado el tema a debatir
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="FechaVencimiento"><b>Fecha y hora de finalizacion del Debate</b></label>
+					<input type="datetime-local" class="form-control"  id="meeting-time" name="FechaVencimiento" value="2018-06-12T19:30"
+					formControlName="FechaVencimiento">
+					<div class="error red"*ngIf="debatesForm.get('FechaVencimiento').hasError('required') && debatesForm.get('FechaVencimiento').touched">
+						No se ha seleccionado una fecha de finalizacion del debate
+					</div>
+				</div>
+				<hr>
+				<button type="submit" [disabled]="debatesForm.invalid" class="btn btn-success"
+				(click)="sendDebate()">Publicar</button>
+			</div>
+		</form>
+	</div>
+</div>

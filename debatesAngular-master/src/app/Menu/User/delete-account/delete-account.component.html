@@ -1,0 +1,14 @@
+<div>
+    <p> esta seguro de eliminar su cuenta al realizar este proceso se borraran todos sus debates y comentarios de la plataforma
+        ademas esta acción no se puede deshacer.
+    </p>
+     <form [formGroup]="deleteAccountForm" novalidate autocomplete="off">
+
+        <label for="Password" ><b>Contraseña</b></label>
+        <input type="Password" formControlName="Password" name="Password" >
+        <div class="error" *ngIf="deleteAccountForm.get('Password').hasError('required') && deleteAccountForm.get('Password').touched">Campo obligatorio</div>
+        <button type="button" [disabled]="deleteAccountForm.invalid" class="btn btn-danger" (click)= "deleteAccount()">eliminar cuenta</button> 
+     </form>
+    
+    <button type="button" class="btn btn-secondary" (click)="cancel()">cancelar</button>
+</div>

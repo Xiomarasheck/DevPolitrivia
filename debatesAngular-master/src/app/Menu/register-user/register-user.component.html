@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center minh-100">
+    <div class="col-md-5">
+      <h4 align="center">Crear un nuevo usuario</h4>  
+      <form  [formGroup]="myForm" novalidate autocomplete="off">
+        <div class="container">
+          <div class="form-group">
+            <label for="Name"><b>Nombre</b></label>
+            <input type="text"  class="form-control" name="Name" formControlName="Name" >
+            <div class="error red" *ngIf="myForm.get('Name').hasError('required') && myForm.get('Name').touched">Nombre requerido</div>
+          </div>
+
+          <div class="form-group">
+            <label for="SecondName"><b>Apellido</b></label>
+            <input type="text" class="form-control" name="SecondName" formControlName="SecondName">
+            <div class="error red" *ngIf="myForm.get('SecondName').hasError('required') && myForm.get('SecondName').touched">Apellido requerido</div>
+          </div>
+
+          <div class="form-group">
+            <label for="Email"><b>Correo electronico</b></label>
+            <input type="Email" class="form-control" name="Email" formControlName="Email">
+            <div class="error red" *ngIf="myForm.get('Email').hasError('required') && myForm.get('Email').touched">Correo electrónico requerido</div>
+            <div class="error red" *ngIf="myForm.get('Email').hasError('Email') && myForm.get('Email').touched">Ingrese un correo electrónico válido</div>     
+          </div>
+
+          <div class="form-group">
+            <label for="Password"><b>Contraseña</b></label>
+            <input type="password" class="form-control" name="Password" formControlName="Password">                
+            <div class="error red" *ngIf="myForm.get('Password').hasError('required') && myForm.get('Password').touched">No se ha ingresado una contraseña</div>
+          </div>
+
+          <div class="form-group">
+            <label for="Rol"><b>Rol</b></label>
+            <select name="Rol" class="form-control" formControlName="Rol" class="form-control">
+              <option value="Student">Estudiante</option>
+              <option value="Prelector">Conferencista</option>
+            </select>             
+            <div class="error red" *ngIf="myForm.get('Rol').hasError('required') && myForm.get('Rol').touched">No se ha ingresado un rol</div>
+          </div>
+
+          <hr>
+          <button type="submit"  [disabled]="myForm.invalid"class="btn btn-success"(click)="addUser($event)">Registrarse</button>
+        </div>       
+      </form>
+      <br>
+    </div>
+  </div>
+</div>

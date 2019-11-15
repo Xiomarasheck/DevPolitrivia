@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-body">
+    <div>
+      <table class="uk-table uk-table-small uk-table-divider">
+        <tr class="card-subtitle"><th class="py-1">Debate</th><td class="py-1">{{ debate.Titulo }} </td></tr>
+        <tr class="card-subtitle"><th class="py-1">Descripcion</th><td class="py-1">{{ debate.Tema }}</td></tr>
+        <tr class="card-subtitle"><th class="py-1">Autor</th><td class="py-1">{{ debate.AutorName }}</td></tr>
+        <tr class="card-subtitle"><th class="py-1">Fecha publicación</th><td class="py-1">{{ debate.FechaPublicacion }}</td></tr>
+        <tr class="card-subtitle"><th class="py-1">Fecha vencimiento</th><td class="py-1">{{ debate.FechaVencimiento }}</td></tr>
+        <tr class="card-subtitle"><th class="py-1">Número de votos</th><td class="py-1">{{ debate.RatingCount }}</td></tr>
+        <tr class="card-subtitle"><th class="py-1">Promedio</th><td class="py-1">{{ debate.Average }}</td></tr>
+      </table>
+    </div>
+  
+     <ngb-rating [(rate)]="currentRate" max="5" [(ngModel)] = "currentRate" (click)="rating()">
+      <ng-template let-fill="fill" let-index="index">
+        <span   class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+      </ng-template>
+    </ngb-rating> 
+    <pre>Rate: <b>{{currentRate}}</b></pre>
+    <div *ngIf="showComment">
+      <app-comments [currentComment]="xcomment" *ngFor="let xcomment of commentsInDebate$ | async"></app-comments>
+    </div>
+
+    <form [formGroup]="debatesInScrollForm" novalidate autocomplete="off">
+      <div *ngIf="debate.Estado === false">
+        <input type="text" name="Descripcion" class="form-control mb-3" formControlName="Descripcion"
+          placeholder="Comenta este debate" />
+        <div class="d-flex flex-wrap justify-content-between">
+          <button type="button" class="uk-button btn-default uk-button-small"
+            (click)="getComment()">{{textButton}}</button>
+          <button type="submit" [disabled]="debatesInScrollForm.invalid"
+            class="btn btn-success uk-button-small rounded-0" (click)="sendComment()">Publicar comentario</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- <p class="card-text"><span class="date">{{ task.date | date'dd/MM/yyyy' }}</span></p> -->
+  </div>
+</div>

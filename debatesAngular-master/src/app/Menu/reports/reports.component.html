@@ -1,0 +1,35 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+      <h2>Estructura Universo</h2>
+    </div>
+    <div class="col-lg-2">
+    </div>
+  </div>
+
+
+<div class="container">
+  <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Debate</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Fecha</th>
+        </tr>
+      </thead>
+      <tbody *ngFor=" let element of dataSource">
+        <tr>
+          <th scope="row">{{element.position}}</th>
+          <td>{{element.name}}</td>
+          <td>{{element.weight}}</td>
+          <td>@{{element.symbol}}</td>
+        </tr>
+      </tbody>
+      <tr mat-header-row ></tr>
+      <tr mat-row></tr>
+    </table>
+</div>
+
+
+
+
